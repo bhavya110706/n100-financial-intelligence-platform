@@ -1,0 +1,3 @@
+
+rule_id,severity,table_name,issue_count,description
+DQ-02,CRITICAL,profitandloss,26,Duplicate company_id and year combinations
