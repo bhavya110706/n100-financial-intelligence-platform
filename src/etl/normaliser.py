@@ -1,33 +1,24 @@
-import re
-
-
 def normalize_year(year):
     """
-    Convert year values to integer format.
-    Example:
-    FY2024 -> 2024
-    2024 -> 2024
+    Convert values like:
+    Mar 2024 -> 2024
+    Mar 2019 -> 2019
+    TTM -> TTM
     """
 
-    if year is None:
-        return None
+    if str(year).strip().upper() == "TTM":
+        return "TTM"
 
-    year = str(year)
-
-    match = re.search(r"(20\d{2})", year)
-
-    if match:
-        return int(match.group(1))
-
-    return None
+    return str(year).split()[-1]
 
 
 def normalize_ticker(ticker):
     """
-    Convert ticker symbols to standard format.
-    """
+    Standardize ticker names.
 
-    if ticker is None:
-        return None
+    Example:
+    adaniports -> ADANIPORTS
+    Reliance -> RELIANCE
+    """
 
     return str(ticker).strip().upper()
