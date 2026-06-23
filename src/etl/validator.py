@@ -10,6 +10,8 @@ def check_primary_key_uniqueness(df, column_name):
     duplicates = df[df[column_name].duplicated()]
 
     return duplicates
+
+
 def check_company_year_uniqueness(df):
     """
     DQ-02
@@ -24,6 +26,8 @@ def check_company_year_uniqueness(df):
     ]
 
     return duplicates
+
+
 def check_foreign_key_integrity(
     child_df,
     parent_df,
@@ -42,3 +46,20 @@ def check_foreign_key_integrity(
     ]
 
     return invalid_rows
+
+
+def check_balance_sheet_balance(bs_df):
+    """
+    DQ-04
+    Total Assets should approximately equal Total Liabilities
+    Difference must be less than 1%
+    """
+
+    diff_percent = (
+        abs(bs_df["total_assets"] - bs_df["total_liabilities"])
+        / bs_df["total_assets"]
+    ) * 100
+
+    failures = bs_df[diff_percent > 1]
+
+    return failures
