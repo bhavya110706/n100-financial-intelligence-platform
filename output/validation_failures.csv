@@ -1,3 +1,7 @@
-
 rule_id,severity,table_name,issue_count,description
-DQ-02,CRITICAL,profitandloss,26,Duplicate company_id and year combinations
+DQ-01,CRITICAL,companies,0,Primary key duplicates
+DQ-02,CRITICAL,profitandloss,26,Duplicate company/year combinations
+DQ-03,CRITICAL,profitandloss,99,Foreign key violations
+DQ-04,WARNING,balancesheet,0,Assets vs liabilities mismatch
+DQ-05,WARNING,profitandloss,231,OPM mismatch
+DQ-06,WARNING,profitandloss,1,Non-positive sales
